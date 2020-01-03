@@ -1,4 +1,4 @@
-from BrickSetSpider import BrickSetSpider
+from parses.BrickSetSpider import BrickSetSpider
 from scrapy.crawler import CrawlerProcess
 
 
