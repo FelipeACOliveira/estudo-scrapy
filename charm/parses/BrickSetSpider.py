@@ -7,14 +7,16 @@ class BrickSetSpider(scrapy.Spider):
     start_urls = ['http://brickset.com/sets/year-2016']
 
     def parse(self, response):
-        css_selector = '.set'
+        xpath_selector = '//div/h1/a'
 
-        for brickset in response.css(css_selector):
-            name_selector = 'h1 a ::text'
+        for brickset in response.xpath(xpath_selector):
+            id_selector = 'span/text()'
+            name_selector = 'text()'
 
             document = {
-                'id': brickset.css(name_selector).getall()[0].strip()[:-1],
-                'name': brickset.css(name_selector).getall()[1].strip()
+                'id': brickset.xpath(id_selector).get().strip()[:-1],
+                'name': brickset.xpath(name_selector).get().strip()
             }
 
-            print(document)
+
+
